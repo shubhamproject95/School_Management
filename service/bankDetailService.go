@@ -40,7 +40,7 @@ func (b *BankDetail) DeleteBankDetail(BankDetailID string) (bool, error) {
 	return true, nil
 }
 
-// Get
+// Get Bank details
 func (b *BankDetail) GetsBankDetail(staffID uint) (*[]model.BankDetail, error) {
 	BankDetail := &[]model.BankDetail{}
 	err := b.db.Where("staff_id=?", staffID).Find(BankDetail).Error
