@@ -1,0 +1,24 @@
+type Complain{
+    ID:        ID!  
+	Complain:  String!   
+	StudentID: String!
+}
+
+extend type Query{
+    getComplain(id: ID!): Complain!
+
+    deleteComplain(id: ID!): Boolean!
+}
+
+extend type Mutation{
+    addComplain(
+        Complain:   String!
+        StudentID:  String!
+    ): Complain!
+
+    updateComplain(
+        ID:        ID!
+        Complain:  String!
+        StudentID: String!
+    ): Complain!
+}

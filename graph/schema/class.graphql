@@ -1,0 +1,21 @@
+type Class{
+    ID:       ID!
+	Class:    String! 
+}
+
+extend type Mutation{
+    addClass(
+        Class: String!
+    ): Class!
+
+    updateClass(
+    ID:       ID!
+	Class:    String!   
+    ): Boolean!
+
+}
+
+extend type Query{
+    getClass(id: ID!): Class!
+    deleteClass(id: ID!): Boolean!
+}

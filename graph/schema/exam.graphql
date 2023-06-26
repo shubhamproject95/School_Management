@@ -1,0 +1,38 @@
+type Exam{
+    ID:              ID!
+	SubjectID:       String!
+	ClassID:         String!
+	ExamType:        String! 
+	InternalMarks:   Int!
+	ExtenalMarks:    Int!
+	PracticalMarks:  Int!
+
+}
+
+extend type Query{
+    getExam(id: ID!): Exam!
+    
+    deleteExam(id: ID!): Boolean!
+
+}
+
+extend type Mutation{
+    addExam(
+        SubjectID:       String!
+	    ClassID:         String!
+	    ExamType:        String! 
+	    InternalMarks:   Int!
+	    ExtenalMarks:    Int!
+	    PracticalMarks:  Int!
+    ): Exam!
+
+    updateExam(
+        ID:              ID!
+        SubjectID:       String!
+	    ClassID:         String!
+	    ExamType:        String! 
+	    InternalMarks:   Int!
+	    ExtenalMarks:    Int!
+	    PracticalMarks:  Int!   
+    ): Exam!
+}

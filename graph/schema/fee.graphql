@@ -1,0 +1,39 @@
+type Fees{
+    ID:             ID!
+	StudentID:      Int!   
+	Session:        String!
+	FeesPaid:       Int!   
+	TotalFees:      Int!   
+	Pending:        Int!   
+	Month:          String!
+	ClassID:        Int!  
+}
+
+extend type Query{
+    getFee(id: ID!): Fees!
+
+    deleteFee(id: ID!): Boolean!
+}
+
+extend type Mutation{
+    addFee(
+        StudentID:      Int!   
+	    Session:        String!
+	    FeesPaid:       Int!   
+	    TotalFees:      Int!   
+	    Pending:        Int!   
+	    Month:          String!
+	    ClassID:        Int!  
+    ): Fees!
+
+    updateFee(
+        ID:             ID!
+        StudentID:      Int 
+	    Session:        String
+	    FeesPaid:       Int 
+	    TotalFees:      Int   
+	    Pending:        Int   
+	    Month:          String
+	    ClassID:        Int  
+    ): Boolean  !
+}

@@ -1,0 +1,41 @@
+type Staff{
+    ID:          ID!
+	Name:        String!    
+	DOB:         String!    
+	JoiningDate: String!    
+	Aadharno:    String!
+    StaffType:   String!  
+}
+
+extend type Query{
+    getStaff(
+        StaffType: String!
+    ): Staff!
+
+    deleteStaff(id: ID!): Boolean!
+
+    getStaffByID(
+        id:         ID!
+        StaffType:  String!
+
+    ): Staff!
+}
+
+extend type Mutation{
+    addStaff(
+        Name:           String!
+        DOB:            String!
+        JoiningDate:    String!
+        Aadharno:       String!
+        StaffType:      String!
+    ): Staff!
+
+    updateStaff(
+        ID:          ID!
+        Name:        String!
+        DOB:         String!
+        JoiningDate: String!
+        Aadharno:    String!
+        StaffType:   String!
+    ): Staff!
+}

@@ -1,0 +1,91 @@
+type User{
+    ID:             ID!
+	UserName:       String!
+	Password:       String!
+	UserType:       String!
+	RolesID:        Int!
+}
+
+type Login{
+    ID:          ID!   
+	UserName:    String! 
+	Password:    String!
+    UserType:    String!
+	UserTypeID:  Int!
+	RoleID:      Int!
+	Token:       String!
+}
+
+type ResetPassword{
+    ID:               ID! 
+	UserID:           Int! 
+	ResetKey:         String! 
+	IsUsed:           Boolean!
+	UpdatePasswordID: Int!
+}
+
+extend type Query{
+    deleteUser(id: ID!): Boolean!
+
+    getUser(id: ID!): User!
+
+    userLogin(
+        UserName: String!
+        Password: String!
+    ): Login!
+
+    getUserByModel(
+        UserName: String!
+        Password: String!
+        UserType: String!
+        RolesID:  Int!   
+    ): User!
+
+    getResetKey(
+        resetKey: String!
+    ): ResetPassword!
+
+    auth(
+        Token: String!
+    ): Login!
+}
+
+
+extend type Mutation{
+    addUser(
+        UserName: String!
+        Password: String!
+        UserType: String!
+        RolesID:  Int!
+    ): User!
+
+    updateUser(
+        ID:             ID!
+        UserName:       String!
+	    Password:       String!
+	    UserType:       String!
+	    RolesID:        Int!
+    ): User!
+
+      updateResetKet(
+        ID:               Int! 
+	    UserID:           Int! 
+	    ResetKey:         String! 
+	    IsUsed:           Boolean!
+	    UpdatePasswordID: Int! 
+    ): Boolean!
+
+    generateToken(
+        LoginID: Int!
+    ): String!
+
+    addLogin(
+        UserName:    String!
+	    Password:    String!
+	    UserType:    String!
+	    UserTypeID:  Int!
+	    RoleID:      Int!
+	    Token:       String!
+    ): Login!
+    
+}

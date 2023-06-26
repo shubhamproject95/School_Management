@@ -1,0 +1,18 @@
+type Guardian{
+    ID:             ID!
+    StudentID:      Int!
+	GuardianType:   String!
+	GuardianName:   String!
+}
+
+extend type Query{
+    deleteGuardian(id: ID!): Boolean!
+}
+
+extend type Mutation{
+    addGuardian(
+        StudentID:    Int!
+        GuardianType: String!
+        GuardianName: String!
+    ): Guardian!
+}

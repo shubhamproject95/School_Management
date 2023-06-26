@@ -1,0 +1,23 @@
+type Result{
+    ID:           ID!
+	ResultType:   String!
+	RollNumber:   Int!
+}
+
+extend type Query{
+    getResult(id: ID!): Result!
+
+	deleteResult(id: ID!): Boolean!
+}
+
+extend type Mutation{
+	addResult(
+		ResultType: String!
+		RollNumber: String!
+	): Result!
+
+	updateResult(
+		ResultType: String!
+		RollNumber: String!
+	): Result!
+}

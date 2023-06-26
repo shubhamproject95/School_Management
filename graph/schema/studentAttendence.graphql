@@ -1,0 +1,24 @@
+type StudentAttendence{
+    ID:          ID!
+    Attendence:  String!
+    StudentID:   String!
+}
+
+extend type Mutation{
+    addStudentAttendence(
+        Attendence: String!
+        StudentID:  String!
+    ): StudentAttendence!
+
+    updateStudentAttendence(
+        ID:             ID!
+        Attendence:     String!
+        StudentID:      String!
+    ): StudentAttendence!
+}
+
+extend type Query{
+    getStudentAttendence(id: ID!): StudentAttendence!
+
+    deleteStudentAttendence(id: ID!): Boolean! 
+}

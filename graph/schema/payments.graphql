@@ -1,0 +1,49 @@
+extend type Mutation{
+     """Creates new Payment method based on input data."""
+    createPaymentMethod(orgID: UUID1!, input: PaymentMethodCreateInput!): PaymentMethodOutput!
+}
+
+
+input PaymentMethodCreateInput {
+    paymentType: PaymentType!
+    achData: ACHData
+    wireData: WireData
+    creditCardData: CreditCardData
+}
+
+union PaymentMethodOutput = CreditCardPaymentMethodOutput | ACHPaymentMethodOutput | WirePaymentMethodOutput | CryptoPaymentMethodOutput
+
+type CryptoPaymentMethodOutput {
+    id: UUID1!
+    type: PaymentType!
+    status: String!
+}
+
+type WirePaymentMethodOutput {
+    id: UUID1!
+    type: PaymentType!
+    status: String!
+    description: String!
+    bankAddress: WireBankAddressOutput
+    billingDetails: WireBillingDetailsOutput
+}
+
+type ACHPaymentMethodOutput {
+    id: UUID1!
+    type: PaymentType!
+    status: String!
+    accountNumber: String!
+    metadata: ACHMetadataOutput
+    bankAddress: ACHBankAddressOutput
+    billingDetails: ACHBillingDetailsOutput
+}
+
+type CreditCardPaymentMethodOutput {
+    id: UUID1!
+    type: PaymentType!
+    status: String!
+    network: String!
+    last4Digit: String!
+    metadata: CreditCardMetadataOutput
+    billingDetails: CreditCardBillingDetailsOutput
+}

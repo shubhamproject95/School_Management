@@ -1,0 +1,22 @@
+type Role{
+    ID:        ID! 
+	Role:      String!
+	Status:    String!
+}
+
+extend type Query{
+    getRole(id: ID!): Role!
+    deleteRole(id: ID!): Boolean!
+}
+
+extend type Mutation{
+    addRole(
+        Role:   String!
+        Status: String!
+    ): Role!
+    updateRole(
+        ID:     ID!
+        Role:   String!
+        Status: String!
+    ): Role!
+}

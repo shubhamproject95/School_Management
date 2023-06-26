@@ -1,0 +1,23 @@
+type ClassSubject{
+    ID:       ID!
+	ClassID:  Int!
+	SubjectID: Int!
+}
+
+extend type Mutation{
+    addClassSubject(
+       ClassID:    Int!
+	   SubjectID:  Int! 
+    ): ClassSubject!
+
+    updateClassSubject(
+        ID:        ID!
+        ClassID:   Int!
+	    SubjectID: Int!
+    ): Boolean!
+}
+
+extend type Query{
+    getClassSubject(id: ID!): ClassSubject!
+    deleteClassSubject(id: ID!): Boolean!
+}

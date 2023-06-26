@@ -1,0 +1,22 @@
+type Homework{
+    ID:             ID!
+    SubjectID:      Int! 
+	TeacherID:      Int! 
+	ClassID:        Int! 
+	Description:    String!
+	SubmissionDate: String!
+}
+
+extend type Query{
+    deleteHomework(id: ID!): Boolean!
+}
+
+extend type Mutation{
+    addHomework(
+        SubjectID:      Int!
+        TeacherID:      Int!
+        ClassID:        Int!
+        Description:    String!
+        SubmissionDate: String!
+    ): Homework!
+}

@@ -1,0 +1,21 @@
+type Subject{
+    ID:        ID!   
+	Subject:   String!
+}
+
+extend type Mutation{
+    addSubject(
+        Subject: String!
+    ): Subject!
+
+    updateSubject(
+        ID: ID!
+        Subject: String!
+    ): Subject!
+}
+
+extend type Query{
+    getSubject(ID: ID!): Subject!
+
+    deleteSubject(ID: ID!): Boolean!
+}

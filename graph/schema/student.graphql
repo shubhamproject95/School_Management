@@ -1,0 +1,36 @@
+type Student{
+    ID:                ID!
+	Name:              String!
+	Address:           String!
+	DOB:               String!
+	Father_Name:       String!
+	Mother_Name:       String!
+	Status:            String!
+}
+
+extend type Query{
+    getStudent(id: ID!): Student!
+    deleteStudent(id: ID!): Boolean!
+    getStudents: [Student!]
+}
+
+extend type Mutation{
+    addStudent(
+        Name:              String!
+        Address:           String!
+        DOB:               String!
+        Father_Name:       String!
+        Mother_Name:       String!
+        Status:            String!
+    ): Student!
+
+    updateStudent(
+        ID:                ID!
+	    Name:              String!
+	    Address:           String!
+	    DOB:               String!
+	    Father_Name:       String!
+	    Mother_Name:       String!
+	    Status:            String! 
+    ): Boolean!
+}

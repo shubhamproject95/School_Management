@@ -1,0 +1,26 @@
+type BankDetail{
+    ID:             ID!
+    StaffID:        String!
+    Name:           String!
+    Bank:           String!
+    BankAccount:    String!
+    IFSC:           String!
+    BranchCode:     String!
+    IsDefault:      String!
+} 
+
+extend type Query{
+    deleteBankDetail(id: ID!): Boolean!
+}
+
+extend type Mutation{
+    addBankDetail(
+        StaffID:        String!
+        Name:           String!
+        Bank:           String!
+        BankAccount:    String!
+        IFSC:           String!
+        BranchCode:     String!
+        IsDefault:      String!
+    ): BankDetail!
+}

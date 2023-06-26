@@ -1,0 +1,36 @@
+type Teacher{
+    ID:            ID!
+    FirstName:     String!
+    LastName:      String!
+    Department:    String!
+    DOB:           String!
+    JoiningAt:     String!
+    Status:        String!
+}
+
+extend type Mutation{
+    addTeacher(
+        FirstName:     String!
+        LastName:      String!
+        Department:    String!
+        DOB:           String!
+        JoiningAt:     String!
+        Status:        String!
+    ): Teacher!
+
+    updateTeacher(
+        ID:            ID!
+        FirstName:     String!
+        LastName:      String!
+        Department:    String!
+        DOB:           String!
+        JoiningAt:     String!
+        Status:        String!
+    ): Teacher!
+}
+
+extend type Query{
+    getTeacher(id: ID!): Teacher!
+
+    deleteTeacher(id: ID!): Boolean!
+}
